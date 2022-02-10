@@ -38,29 +38,34 @@ sitesNumber <- nrow(moveMat)
 ####################
 # Basic Inheritance pattern
 ####################
-# make a RIDL inheritance cube - print(cube) to investigate  
-# W: Wild-type allele # R: OX513 RIDL allele
-tarecube <- cubeClvR2(cF = 1,
-                      crF = 0,
-                      ccF = 1,
-                      ccrF = 0,
-                      cM = 1,
-                      crM = 0,
-                      ccM = 1,
-                      ccrM = 0,
-                      dW = 0.8,
-                      drW = 0,
-                      ddW = 0.8,
-                      ddrW = 0,
-                      hSuf = 1,
-                      crossF = 0.5,
-                      crossM = 0.5,
-                      eta = NULL,
-                      phi = NULL,
-                      omega = NULL,
-                      xiF = NULL,
-                      xiM = NULL,
-                      s = NULL)
+# make a TARE inheritance cube - print(tarecube) to investigate  
+# W: Wild-type allele # H:  # B:
+# Assign sex ratio of offspring to simulate sex switching gene
+newphi <- c("HHWW"= 0, "HHBB" = 0, "WHBB" = 0, "WHWB" = 0)
+
+
+# establish inheritance cube, 80% female deposition cutting rate
+tarecube <- cubeClvR(
+  cF = 1,
+  crF = 0,
+  ccF = 1,
+  ccrF = 0,
+  cM = 1,
+  crM = 0,
+  ccM = 1,
+  ccrM = 0,
+  dW = 0.8,
+  drW = 0,
+  ddW = 0,
+  ddrW = 0,
+  hSuf = 1,
+  eta = NULL,
+  phi = newphi,
+  omega = NULL,
+  xiF = NULL,
+  xiM = NULL,
+  s = NULL
+)
 
 
 #
