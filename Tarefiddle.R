@@ -8,27 +8,17 @@ rm(list=ls())
 outFolder <- "medfly_tare"
 dir.create(path = outFolder)
 
-
-# movement matrix for 1 node
-moveMat <- matrix(data = 1, nrow = 2, ncol = 2)
-moveMat
-
-
-### EXAMPLE
 ####################
 # Simulation Parameters
 ####################
 
 # time in days
 tMax <- 365
-# nRep <- 10
-
 
 # biological parameters- time in each stage, betak (Female egg batch size of wild-type)
 # muAd (Wild-type daily adult mortality (1/muAd is average wild-type lifespan))
 bioParameters <- list(betaK=20.35,tEgg=2.18,tLarva=7.12,tPupa=9.4,popGrowth=1.056,muAd=0.1)
 
-# not sure why this is here a second time?
 moveMat <- matrix(data = 1, nrow = 1, ncol = 1)
 
 # Adult population size at equilibrium
@@ -54,7 +44,7 @@ tarecube <- cubeClvR(
   crM = 0,
   ccM = 1,
   ccrM = 0,
-  dW = 0.8,
+  dW = 1,
   drW = 0,
   ddW = 0,
   ddrW = 0,
