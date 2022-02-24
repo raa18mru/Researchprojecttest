@@ -5,7 +5,7 @@ rm(list=ls())
 # Output Folder
 ####################
 # Simple start, assigning the folder for data to be output
-outFolder <- "medfly_tare"
+outFolder <- "medfly_tare_no_loop"
 dir.create(path = outFolder)
 
 ####################
@@ -31,7 +31,7 @@ sitesNumber <- nrow(moveMat)
 # make a TARE inheritance cube - print(tarecube) to investigate  
 # W: Wild-type allele # H:  # B:
 # Assign sex ratio of offspring to simulate sex switching gene
-newphi <- c("HHWW"= 0, "HHBB" = 0, "WHBB" = 0, "WHWB" = 0)
+newphi <- c("HHBB" = 0, "WHBB" = 0)
 
 
 # establish inheritance cube, 80% female deposition cutting rate
@@ -46,7 +46,7 @@ tarecube <- cubeClvR(
   ccrM = 0,
   dW = 1,
   drW = 0,
-  ddW = 0,
+  ddW = 1,
   ddrW = 0,
   hSuf = 1,
   eta = NULL,

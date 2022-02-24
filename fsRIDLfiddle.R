@@ -20,7 +20,7 @@ moveMat
 ####################
 
 # time in days
-tMax <- 730
+tMax <- 365
 # nRep <- 10
 
 
@@ -57,10 +57,10 @@ patchReleases <- replicate(n=sitesNumber,
                            simplify=FALSE)
 
 # choose release parameters
-releasesParameters <- list(releasesStart=0,
-                           releasesNumber=24,
-                           releasesInterval=15,
-                           releaseProportion=450)
+releasesParameters <- list(releasesStart=1,
+                           releasesNumber=10,
+                           releasesInterval=10,
+                           releaseProportion=200)
 
 # generate release vector
 malereleasesVector <- generateReleaseVector(driveCube=cube,

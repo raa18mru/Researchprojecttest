@@ -37,7 +37,7 @@ sitesNumber <- nrow(moveMat)
 
 female_deposition_cutting <- list(0,0.2,0.4,0.6,0.8,1)
 run <- list(1,2,3,4,5,6)
-newphi <- c("HHWW"= 0, "HHBB" = 0, "WHBB" = 0, "WHWB" = 0)
+newphi <- c("HHBB" = 0, "WHBB" = 0)
 
 for (i in 1:length(female_deposition_cutting)) {
   # establish inheritance cube
@@ -73,8 +73,8 @@ for (i in 1:length(female_deposition_cutting)) {
                              simplify=FALSE)
   
   # choose release parameters
-  releasesParameters <- list(releasesStart=25,
-                             releasesNumber=20,
+  releasesParameters <- list(releasesStart=1,
+                             releasesNumber=10,
                              releasesInterval=10,
                              releaseProportion=200)
   
@@ -141,7 +141,7 @@ for (i in 1:length(female_deposition_cutting)) {
 
 
 # plot output to see effect
-plotMGDrivESingle(readDir = outFolder, totalPop = TRUE, lwd = 3.5, alpha = 1)
+# plotMGDrivESingle(readDir = outFolder, totalPop = TRUE, lwd = 3.5, alpha = 1)
 
 
 
@@ -150,3 +150,8 @@ plotMGDrivESingle(readDir = outFolder, totalPop = TRUE, lwd = 3.5, alpha = 1)
 # Resistance generation
 # fitness of drive carriers
 # female/male cutting rate
+
+##############
+
+# combine 2 CSV to one data frame - look at old research project for combining scripts
+# mutate new column to keep track of which technology is which, colour the aesthetic to technology
