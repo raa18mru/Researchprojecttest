@@ -1,22 +1,29 @@
-#read in both loops and not-loops
 rm(list=ls())
-install.packages("tidyverse")
 
 library(tidyverse)
+library(ggridges)
+
+#read in both loops and not-loops
 
 tarecsv <- read.csv("medfly_tare_no_loop/F_aggregate_run001_Patch001.csv")
 ridlcsv <- read.csv("medfly_ridl/F_Aggregate_run001_Patch001.csv")
 # Make a total column and a tehcnology column
-ridltotals <- mutate(ridlcsv, technology= "ridl")
-ridltotals <- mutate(ridlcsv, total= WW+WR+RR)
-taretotals <- mutate(tarecsv, technology= "tare")
-taretotals <- mutate(tarecsv, total= WWWW+WHWB+WWWB)
+
+
+ridltotals <- mutate(ridlcsv, technology= "RIDL") %>% 
+  mutate(ridlcsv, total= WW+WR+RR)
+taretotals <- mutate(tarecsv, technology= "TARE") %>% 
+  mutate(tarecsv, total= WWWW+WHWB+WWWB)
 ridltotals <- summarise(ridltotals, technology,total,Time)
 taretotals <- summarise(taretotals, technology,total,Time)
 totals <- rbind(ridltotals, taretotals)
 
-
 # Make ggplot
 
 ggplot(data = totals, mapping = aes(x = Time, y = total, colour = technology)) +
-  geom_point()
+  geom_line(size=2) + theme_light() +
+  labs(title= "The Impact of TARE Sex-Switching and RIDL on Female Medfly in Ideal parameters")+ 
+  xlab("Time (days)") +
+  ylab("Number of Females") +
+  scale_color_brewer(palette="Dark2") + 
+  scale_x_continuous(expand = c(0, 0)) 
