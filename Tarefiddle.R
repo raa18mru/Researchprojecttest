@@ -34,7 +34,7 @@ sitesNumber <- nrow(moveMat)
 newphi <- c("HHBB" = 0, "WHBB" = 0)
 
 
-# establish inheritance cube, 80% female deposition cutting rate
+# establish inheritance cube, 100% female deposition cutting rate
 tarecube <- cubeClvR(
   cF = 1,
   crF = 0,
