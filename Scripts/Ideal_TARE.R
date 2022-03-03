@@ -5,8 +5,8 @@ rm(list=ls())
 # Output Folder
 ####################
 # Simple start, assigning the folder for data to be output
-outFolder <- "medfly_tare_no_loop"
-dir.create(path = outFolder)
+outFolder <- "Ideal_Tare"
+#dir.create(path = outFolder)
 
 ####################
 # Simulation Parameters
@@ -34,7 +34,7 @@ sitesNumber <- nrow(moveMat)
 newphi <- c("HHBB" = 0, "WHBB" = 0)
 
 
-# establish inheritance cube, 100% female deposition cutting rate
+# establish inheritance cube, 100% female deposition cutting rate, 100% sex switching
 tarecube <- cubeClvR(
   cF = 1,
   crF = 0,
@@ -69,10 +69,10 @@ patchReleases <- replicate(n=sitesNumber,
                            simplify=FALSE)
 
 # choose release parameters
-releasesParameters <- list(releasesStart=1,
+releasesParameters <- list(releasesStart=30,
                            releasesNumber=10,
                            releasesInterval=10,
-                           releaseProportion=200)
+                           releaseProportion=300)
 
 # generate release vector
 malereleasesVector <- generateReleaseVector(driveCube=tarecube,
@@ -134,7 +134,7 @@ aggregateFemales(readDir = outFolder, genotypes = tarecube$genotypesID,
 
 
 # plot output to see effect
-plotMGDrivESingle(readDir = outFolder, totalPop = TRUE, lwd = 3.5, alpha = 1)
+# plotMGDrivESingle(readDir = outFolder, totalPop = TRUE, lwd = 3.5, alpha = 1)
 
 
 

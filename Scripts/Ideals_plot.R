@@ -1,13 +1,12 @@
 rm(list=ls())
 
 library(tidyverse)
-library(ggridges)
 
 #read in both loops and not-loops
 
-tarecsv <- read.csv("medfly_tare_no_loop/F_aggregate_run001_Patch001.csv")
-ridlcsv <- read.csv("medfly_ridl/F_Aggregate_run001_Patch001.csv")
-# Make a total column and a tehcnology column
+tarecsv <- read.csv("Ideal_TARE/F_aggregate_run001_Patch001.csv")
+ridlcsv <- read.csv("Ideal_RIDL/F_Aggregate_run001_Patch001.csv")
+# Make a total column and a technology column
 
 
 ridltotals <- mutate(ridlcsv, technology= "RIDL") %>% 

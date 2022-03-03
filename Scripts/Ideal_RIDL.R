@@ -5,8 +5,8 @@ library(MGDrivE)
 # Output Folder
 ####################
 # Simple start, assigning the folder for data to be output
-outFolder <- "medfly_RIDL"
-dir.create(path = outFolder)
+outFolder <- "Ideal_RIDL"
+#dir.create(path = outFolder)
 
 
 # movement matrix for 1 node
@@ -57,10 +57,10 @@ patchReleases <- replicate(n=sitesNumber,
                            simplify=FALSE)
 
 # choose release parameters
-releasesParameters <- list(releasesStart=1,
-                           releasesNumber=10,
+releasesParameters <- list(releasesStart=30,
+                           releasesNumber=15,
                            releasesInterval=10,
-                           releaseProportion=200)
+                           releaseProportion=300)
 
 # generate release vector
 malereleasesVector <- generateReleaseVector(driveCube=cube,
@@ -123,10 +123,8 @@ aggregateFemales(readDir = outFolder, genotypes = cube$genotypesID,
 
 
 # plot output to see effect
-# clear plummet in population, but once introductions stop population 
-# quickly raises back to equilibrium
-# no matter how aggressively wild type is outcompeted, 0.0x females remain and population grows?
-plotMGDrivESingle(readDir = outFolder, totalPop = TRUE, lwd = 3.5, alpha = 1)
+
+# plotMGDrivESingle(readDir = outFolder, totalPop = TRUE, lwd = 3.5, alpha = 1)
 
 
 
