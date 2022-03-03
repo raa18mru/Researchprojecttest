@@ -4,8 +4,10 @@ rm(list=ls())
 ####################
 # Output Folder
 ####################
-# Simple start, assigning the folder for data to be output
+# Simple start, assigning the folder for data to be output, clear previous run
+
 outFolder <- "Ideal_Tare"
+unlink("Ideal_Tare/*")
 #dir.create(path = outFolder)
 
 ####################
@@ -69,10 +71,10 @@ patchReleases <- replicate(n=sitesNumber,
                            simplify=FALSE)
 
 # choose release parameters
-releasesParameters <- list(releasesStart=30,
-                           releasesNumber=10,
-                           releasesInterval=10,
-                           releaseProportion=300)
+releasesParameters <- list(releasesStart=20,
+                           releasesNumber=15,
+                           releasesInterval=15,
+                           releaseProportion=400)
 
 # generate release vector
 malereleasesVector <- generateReleaseVector(driveCube=tarecube,

@@ -5,11 +5,14 @@ library(MGDrivE)
 # Output Folder
 ####################
 # Simple start, assigning the folder for data to be output
-outFolder <- "medfly_tare"
-dir.create(path = outFolder)
-aggFolder <- "medfly_tare/aggFolder"
-dir.create(path = aggFolder)
-MGDrivESim <- list(length(cleavage))
+outFolder <- "Deposition_investigation"
+# dir.create(path = outFolder)
+aggFolder <- "Deposition_investigation/aggFolder"
+# dir.create(path = aggFolder)
+
+# Clears the previous run CSVs
+unlink("Deposition_investigation/*")
+unlink("Deposition_investigation/aggFolder/*")
 
 ####################
 # Simulation Parameters
@@ -67,16 +70,17 @@ for (i in 1:length(female_deposition_cutting)) {
   # Setup releases and batch migration
   ####################
   
-  patchReleases <- replicate(n=sitesNumber,
-                             expr={list(maleReleases=NULL,femaleReleases=NULL,
-                                        eggReleases=NULL,matedFemaleReleases=NULL)},
-                             simplify=FALSE)
+patchReleases <- replicate(n=sitesNumber,
+                            expr={list(maleReleases=NULL,femaleReleases=NULL,
+                                       eggReleases=NULL,matedFemaleReleases=NULL)},
+                            simplify=FALSE)
   
   # choose release parameters
   releasesParameters <- list(releasesStart=1,
                              releasesNumber=10,
                              releasesInterval=10,
                              releaseProportion=200)
+
   
   # generate release vector
   malereleasesVector <- generateReleaseVector(driveCube=tarecube,
@@ -93,6 +97,7 @@ for (i in 1:length(female_deposition_cutting)) {
   batchMigration <- basicBatchMigration(batchProbs=0,
                                         sexProbs=c(.5,.5),
                                         numPatches=sitesNumber)
+ 
   
   ####################
   # Combine parameters and run!
@@ -108,9 +113,9 @@ for (i in 1:length(female_deposition_cutting)) {
                                 popGrowth=bioParameters$popGrowth, tEgg=bioParameters$tEgg,
                                 tLarva=bioParameters$tLarva, tPupa=bioParameters$tPupa,
                                 AdPopEQ=adultPopEquilibrium, inheritanceCube = tarecube)
-  if(i %% 1==0){    # The %% operator is the remainder, this handy if line prints a number every time it completes a loop
-    print(i)
-  }
+  
+  # prints a number every time it completes a loop
+  if(i %% 1==0){print(i)}
   
   # build network prior to run
   MGDrivESim <- Network$new(params=netPar,
@@ -131,7 +136,7 @@ for (i in 1:length(female_deposition_cutting)) {
   ####################
   # split output by patch
   #  Required for plotting later
-  # splitOutput(readDir = outFolder, remFile = TRUE, verbose = FALSE)
+# splitOutput(readDir = outFolder, remFile = TRUE, verbose = FALSE)
   
   # aggregate females by their mate choice
   #  This reduces the female file to have the same columns as the male file
@@ -139,19 +144,4 @@ for (i in 1:length(female_deposition_cutting)) {
                    remFile = TRUE, verbose = FALSE, writeDir=aggFolder)
 }
 
-
-# plot output to see effect
-# plotMGDrivESingle(readDir = outFolder, totalPop = TRUE, lwd = 3.5, alpha = 1)
-
-
-
-# parameters of interest : 
-# maternal deposition cutting rate with 1/2 alleles. 
-# Resistance generation
-# fitness of drive carriers
-# female/male cutting rate
-
 ##############
-
-# combine 2 CSV to one data frame - look at old research project for combining scripts
-# mutate new column to keep track of which technology is which, colour the aesthetic to technology

@@ -4,8 +4,9 @@ library(MGDrivE)
 ####################
 # Output Folder
 ####################
-# Simple start, assigning the folder for data to be output
+# assigning the folder for data to be output, clearing previous run
 outFolder <- "Ideal_RIDL"
+unlink("Ideal_RIDL/*")
 #dir.create(path = outFolder)
 
 
@@ -57,10 +58,10 @@ patchReleases <- replicate(n=sitesNumber,
                            simplify=FALSE)
 
 # choose release parameters
-releasesParameters <- list(releasesStart=30,
+releasesParameters <- list(releasesStart=20,
                            releasesNumber=15,
-                           releasesInterval=10,
-                           releaseProportion=300)
+                           releasesInterval=15,
+                           releaseProportion=400)
 
 # generate release vector
 malereleasesVector <- generateReleaseVector(driveCube=cube,
