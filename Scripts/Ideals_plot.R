@@ -20,12 +20,13 @@ taretotals <- summarise(taretotals, technology, total, Time)
 taretotals <- mutate(taretotals, total = ifelse(total < 1, 0, total))
 
 totals <- rbind(ridltotals, taretotals)
+totals <- mutate(totals, Time = Time - 60)
 
 # Prepare male data 
 maletotals <- mutate(malecsv, technology= "Homozygous Males") %>% 
   mutate(malecsv, total= RR)
 maletotals <- summarise(maletotals, technology, total, Time)
-
+maletotals <- mutate(maletotals, Time = Time - 60)
 # Make ggplot
 
 ggplot(data = totals, mapping = aes(x = Time, y = total, colour = technology, )) +
@@ -35,4 +36,8 @@ ggplot(data = totals, mapping = aes(x = Time, y = total, colour = technology, ))
   xlab("Time (days)") +
   ylab("Number of Females") +
   scale_color_brewer(palette = "Dark2") + 
-  scale_x_continuous(expand = c(0, 0)) 
+  scale_x_continuous(expand = c(0, 0), limits = c(0,365)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(-0.5,520)) +
+  scale_colour_discrete(name = "Technology")
+
+ggsave(device = "png", filename = "Ideals", path="plots")

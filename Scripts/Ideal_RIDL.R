@@ -21,7 +21,7 @@ moveMat
 ####################
 
 # time in days
-tMax <- 365
+tMax <- 425
 # nRep <- 10
 
 
@@ -58,7 +58,7 @@ patchReleases <- replicate(n=sitesNumber,
                            simplify=FALSE)
 
 # choose release parameters
-releasesParameters <- list(releasesStart=20,
+releasesParameters <- list(releasesStart=60,
                            releasesNumber=15,
                            releasesInterval=15,
                            releaseProportion=400)

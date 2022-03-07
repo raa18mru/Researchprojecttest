@@ -19,7 +19,7 @@ unlink("Deposition_investigation/aggFolder/*")
 ####################
 
 # time in days
-tMax <- 365
+tMax <- 425
 
 # biological parameters- time in each stage, betak (Female egg batch size of wild-type)
 # muAd (Wild-type daily adult mortality (1/muAd is average wild-type lifespan))
@@ -76,10 +76,10 @@ patchReleases <- replicate(n=sitesNumber,
                             simplify=FALSE)
   
   # choose release parameters
-  releasesParameters <- list(releasesStart=1,
-                             releasesNumber=10,
-                             releasesInterval=10,
-                             releaseProportion=200)
+  releasesParameters <- list(releasesStart=60,
+                             releasesNumber=15,
+                             releasesInterval=15,
+                             releaseProportion=400)
 
   
   # generate release vector
@@ -136,12 +136,13 @@ patchReleases <- replicate(n=sitesNumber,
   ####################
   # split output by patch
   #  Required for plotting later
-# splitOutput(readDir = outFolder, remFile = TRUE, verbose = FALSE)
+splitOutput(readDir = outFolder, remFile = TRUE, verbose = FALSE)
   
   # aggregate females by their mate choice
   #  This reduces the female file to have the same columns as the male file
   aggregateFemales(readDir = outFolder, genotypes = tarecube$genotypesID,
                    remFile = TRUE, verbose = FALSE, writeDir=aggFolder)
+  unlink("Deposition_investigation/*")
 }
 
 ##############

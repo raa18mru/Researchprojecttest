@@ -15,7 +15,7 @@ unlink("Ideal_Tare/*")
 ####################
 
 # time in days
-tMax <- 365
+tMax <- 425
 
 # biological parameters- time in each stage, betak (Female egg batch size of wild-type)
 # muAd (Wild-type daily adult mortality (1/muAd is average wild-type lifespan))
@@ -71,7 +71,7 @@ patchReleases <- replicate(n=sitesNumber,
                            simplify=FALSE)
 
 # choose release parameters
-releasesParameters <- list(releasesStart=20,
+releasesParameters <- list(releasesStart=60,
                            releasesNumber=15,
                            releasesInterval=15,
                            releaseProportion=400)
