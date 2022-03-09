@@ -5,8 +5,8 @@ library(MGDrivE)
 # Output Folder
 ####################
 # assigning the folder for data to be output, clearing previous run
-outFolder <- "Ideal_RIDL"
-unlink("Ideal_RIDL/*")
+outFolder <- "Output/Ideal_RIDL"
+unlink("Output/Ideal_RIDL/*")
 #dir.create(path = outFolder)
 
 
@@ -125,7 +125,7 @@ aggregateFemales(readDir = outFolder, genotypes = cube$genotypesID,
 
 # plot output to see effect
 
-# plotMGDrivESingle(readDir = outFolder, totalPop = TRUE, lwd = 3.5, alpha = 1)
+#plotMGDrivESingle(readDir = outFolder, totalPop = TRUE, lwd = 3.5, alpha = 1)
 
 
 

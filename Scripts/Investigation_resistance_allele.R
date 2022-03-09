@@ -5,14 +5,14 @@ library(MGDrivE)
 # Output Folder
 ####################
 # Simple start, assigning the folder for data to be output
-outFolder <- "resistance_investigation_allele"
+outFolder <- "output/resistance_investigation_allele"
 # dir.create(path = outFolder)
-aggFolder <- "resistance_investigation_allele/aggFolder"
+aggFolder <- "output/resistance_investigation_allele/aggFolder"
 # dir.create(path = aggFolder)
 
 # Clears the previous run CSVs
-unlink("resistance_investigation_allele/*")
-unlink("resistance_investigation_allele/aggFolder/*")
+unlink("output/resistance_investigation_allele/*")
+unlink("output/resistance_investigation_allele/aggFolder/*")
 
 ####################
 # Simulation Parameters
@@ -144,7 +144,7 @@ splitOutput(readDir = outFolder, remFile = TRUE, verbose = FALSE)
   #  This reduces the female file to have the same columns as the male file
   aggregateFemales(readDir = outFolder, genotypes = tarecube$genotypesID,
                    remFile = TRUE, verbose = FALSE, writeDir=aggFolder)
-  unlink("resistance_investigation_allele/*")
+  unlink("output/resistance_investigation_allele/*")
 }
 
 ##############

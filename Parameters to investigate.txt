@@ -1,8 +1,0 @@
-
-
-# parameters of interest : 
-# maternal deposition cutting rate with 1/2 alleles. 
-# Resistance generation
-# fitness of drive carriers
-# female/male cutting rate
-# sex switching efficiency

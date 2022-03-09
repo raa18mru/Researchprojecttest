@@ -6,8 +6,8 @@ rm(list=ls())
 ####################
 # Simple start, assigning the folder for data to be output, clear previous run
 
-outFolder <- "Ideal_Tare"
-unlink("Ideal_Tare/*")
+outFolder <- "Output/Ideal_Tare"
+unlink("Output/Ideal_Tare/*")
 #dir.create(path = outFolder)
 
 ####################

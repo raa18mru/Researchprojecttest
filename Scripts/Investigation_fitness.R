@@ -5,14 +5,14 @@ rm(list=ls())
 # Output Folder
 ####################
 # Simple start, assigning the folder for data to be output
-outFolder <- "output/sex_switching"
+outFolder <- "fitness_investigation"
 # dir.create(path = outFolder)
-aggFolder <- "output/sex_switching/aggFolder"
+aggFolder <- "fitness_investigation/aggFolder"
 # dir.create(path = aggFolder)
 
 # Clears the previous run CSVs
-unlink("output/sex_switching/*")
-unlink("output/sex_switching/aggFolder/*")
+unlink("fitness_investigation/*")
+unlink("fitness_investigation/aggFolder/*")
 
 ####################
 # Simulation Parameters
@@ -38,13 +38,15 @@ sitesNumber <- nrow(moveMat)
 # W: Wild-type allele # H: Homing  # B: Broken
 # Assign sex ratio of offspring to simulate sex switching gene
 
-sex_emergence <- list(0,0.1,0.2,0.3,0.4,0.5)
+fitness <- list(0,0.2,0.4,0.6,0.8,1)
 run <- list(1,2,3,4,5,6)
-for (i in 1:length(sex_emergence)) {
+newphi <- c("HHBB" = 0, "WHBB" = 0)
+
+
+for (i in 1:length(fitness)) {
   
-newphi <- c("HHBB" = sex_emergence[[i]], "WHBB" = sex_emergence[[i]])
-
-
+  neweta <- c("HHBB" = fitness[[i]], "WHBB" = fitness[[i]])
+  
   # establish inheritance cube
   tarecube <- cubeClvR(
     cF = 1,
@@ -59,6 +61,7 @@ newphi <- c("HHBB" = sex_emergence[[i]], "WHBB" = sex_emergence[[i]])
     drW = 0,
     ddW = 1,
     ddrW = 0,
+    eta = neweta,
     phi = newphi,
     omega = NULL,
     xiF = NULL,
@@ -144,7 +147,7 @@ newphi <- c("HHBB" = sex_emergence[[i]], "WHBB" = sex_emergence[[i]])
   #  This reduces the female file to have the same columns as the male file
   aggregateFemales(readDir = outFolder, genotypes = tarecube$genotypesID,
                    remFile = TRUE, verbose = FALSE, writeDir=aggFolder)
-  unlink("output/sex_switching/*")
+  unlink("fitness_investigation/*")
 }
 
 ##############

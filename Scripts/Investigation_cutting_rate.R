@@ -5,14 +5,14 @@ rm(list=ls())
 # Output Folder
 ####################
 # Simple start, assigning the folder for data to be output
-outFolder <- "cutting_investigation"
+outFolder <- "output/cutting_investigation"
 # dir.create(path = outFolder)
-aggFolder <- "cutting_investigation/aggFolder"
+aggFolder <- "output/cutting_investigation/aggFolder"
 # dir.create(path = aggFolder)
 
 # Clears the previous run CSVs
-unlink("cutting_investigation/*")
-unlink("cutting_investigation/aggFolder/*")
+unlink("output/cutting_investigation/*")
+unlink("output/cutting_investigation/aggFolder/*")
 
 ####################
 # Simulation Parameters
@@ -142,7 +142,7 @@ for (i in 1:length(cutting_rate)) {
   #  This reduces the female file to have the same columns as the male file
   aggregateFemales(readDir = outFolder, genotypes = tarecube$genotypesID,
                    remFile = TRUE, verbose = FALSE, writeDir=aggFolder)
-  unlink("cutting_investigation/*")
+  unlink("output/cutting_investigation/*")
 }
 
 ##############

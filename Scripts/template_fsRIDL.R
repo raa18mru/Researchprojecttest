@@ -5,9 +5,9 @@ library(MGDrivE)
 ####################
 # Output Folder
 ####################
-outFolder <- "medfly_RIDL"
+outFolder <- "output/RIDL_template"
 dir.create(path = outFolder)
-
+unlink(outFolder)
 
 # movement matrix for 1 node
 moveMat <- matrix(data = 1, nrow = 1, ncol = 1)

@@ -4,9 +4,9 @@ library(tidyverse)
 
 #read in both loops and not-loops
 
-tarecsv <- read.csv("Ideal_TARE/F_aggregate_run001_Patch001.csv")
-ridlcsv <- read.csv("Ideal_RIDL/F_Aggregate_run001_Patch001.csv")
-malecsv <- read.csv("Ideal_RIDL/M_run001_Patch001.csv")
+tarecsv <- read.csv("Output/Ideal_Tare/F_Aggregate_Run001_Patch001.csv")
+ridlcsv <- read.csv("Output/Ideal_RIDL/F_Aggregate_run001_Patch001.csv")
+malecsv <- read.csv("Output/Ideal_RIDL/M_run001_Patch001.csv")
 # Make a total column and a technology column
 
 
@@ -40,4 +40,4 @@ ggplot(data = totals, mapping = aes(x = Time, y = total, colour = technology, ))
   scale_y_continuous(expand = c(0, 0), limits = c(-0.5,520)) +
   scale_colour_discrete(name = "Technology")
 
-ggsave(device = "png", filename = "Ideals", path="plots")
+ggsave(filename = "Ideals.png", path="plots")
